@@ -9,19 +9,18 @@ Student.prototype.setSubject = function (subjectName) {
   this.subject = subjectName;
 }
 
-Student.prototype.addMarks = function (...marks) {
-  if (this.marks === undefined) {
-    return 0;
-  } else {
-    this.marks = this.marks.concat(marks);
+Student.prototype.addMarks = function(...mark) {
+  if (this.marks) {
+    this.marks.push(...mark);
   }
 }
 
-Student.prototype.getAverage = function () {
-  if (this.marks === undefined) {
+Student.prototype.getAverage = function() {
+  if (!this.marks || !this.marks.length) {
     return 0;
   } else {
-    return this.marks.reduce((a, b) => a + b) / this.marks.length;
+    let sum = this.marks.reduce((acc, item) => acc + item, 0);
+    return sum / this.marks.length;
   }
 }
 
