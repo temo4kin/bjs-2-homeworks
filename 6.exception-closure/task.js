@@ -24,12 +24,29 @@
       }
     }
   
-    getPerimeter() {
+    get Perimeter() {
       return this.a + this.b + this.c;
     }
   
-    getArea() {
-      let p = this.getPerimeter() / 2;
+    get Area() {
+      let p = this.getPerimeter / 2;
       return +Math.sqrt(p * (p - this.a) * (p - this.b) * (p - this.c)).toFixed(3);
     }
+}
+
+
+function getTriangle(a, b, c) {
+    try {
+      return new Triangle(a, b, c);
+    } catch (error) {
+      return {
+        Perimeter() {
+          return "Ошибка! Треугольник не существует";
+        },
+        Area() {
+          return "Ошибка! Треугольник не существует";
+        }
+      };
+    }
   }
+  
